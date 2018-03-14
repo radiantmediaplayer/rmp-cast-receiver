@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+#player {
+  --theme-hue: 207;
+
+  /* customize as you see fit - see https://developers.google.com/cast/docs/caf_receiver_features#styling-the-player */
+  /*
+  --splash-image: url('splash-image');
+  --background-image: url('background-image');
+  --logo-image: url('logo-image');
+  --watermark-image: url('watermark-image');
+  --font-family: 'Open Sans';
+  --progress-color: hsl(hue, 95%, 60%)
+  --spinner-image: url('spinner-image');
+  --buffering-image: url('buffering-image');
+  --pause-image: url('pause-image');
+  --play-image: url('play-image');
+  */
+
+  /* ad related styling - not yet supported */
+  /*
+  --break-color: hsl(hue, 100%, 50%);
+  --ad-title
+  --skip-ad-title
+  */
+}
