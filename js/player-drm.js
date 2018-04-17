@@ -32,19 +32,13 @@ var elementID = 'rmpPlayer';
 var rmp = new RadiantMP(elementID);
 rmp.init(settings);*/
 
-(function () {
-
-  'use strict';
-
-  const context = cast.framework.CastReceiverContext.getInstance();
-  const playbackConfig = new cast.framework.PlaybackConfig();
-  // WIDEVINE license url for playback
-  playbackConfig.licenseUrl = 'https://cwip-shaka-proxy.appspot.com/no_auth';
-  // example for license requests with withCredentials 
-  /*playbackConfig.licenseRequestHandler = requestInfo => {
-    requestInfo.withCredentials = true;
-  };*/
-  playbackConfig.protectionSystem = cast.framework.ContentProtection.WIDEVINE;
-  context.start({playbackConfig: playbackConfig});
-
-})();
+const context = cast.framework.CastReceiverContext.getInstance();
+const playbackConfig = new cast.framework.PlaybackConfig();
+// WIDEVINE license url for playback
+playbackConfig.licenseUrl = 'https://cwip-shaka-proxy.appspot.com/no_auth';
+// example for license requests with withCredentials 
+/*playbackConfig.licenseRequestHandler = requestInfo => {
+  requestInfo.withCredentials = true;
+};*/
+playbackConfig.protectionSystem = cast.framework.ContentProtection.WIDEVINE;
+context.start({ playbackConfig: playbackConfig });

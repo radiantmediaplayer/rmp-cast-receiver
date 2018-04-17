@@ -11,51 +11,46 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-(function () {
+const context = cast.framework.CastReceiverContext.getInstance();
+const playerManager = context.getPlayerManager();
+var ad = {
+  getBreakClipTitle: function () {
+    return 'RMP AD';
+  },
+  getBreakClipUrl: function () {
+    return 'https://www.rmp-streaming.com/vast/mp4s/ad-10s.mp4';
+  },
+  getBreakClipContentType: function () {
+    return 'video/mp4';
+  },
+  getBreakClipPosterUrl: function () {
+    return 'https://www.radiantmediaplayer.com/images/poster-rmp-ads.jpg';
+  },
+  getBreakClipPosition: function () {
+    return 0;
+  }
+};
 
-  'use strict';
+function addBreakToMedia(media) {
+  media.breakClips = [{
+    id: 'bc1',
+    title: ad.getBreakClipTitle(),
+    contentId: ad.getBreakClipUrl(),
+    contentType: ad.getBreakClipContentType(),
+    posterUrl: ad.getBreakClipPosterUrl(),
+    whenSkippable: 5
+  }];
+  media.breaks = [{
+    id: 'b1',
+    breakClipIds: ['bc1'],
+    position: ad.getBreakClipPosition()
+  }];
+}
 
-  const context = cast.framework.CastReceiverContext.getInstance();
-  const playerManager = context.getPlayerManager();
-  var ad = {
-    getBreakClipTitle: function () {
-      return 'RMP AD';
-    },
-    getBreakClipUrl: function () {
-      return 'https://www.rmp-streaming.com/vast/mp4s/ad-10s.mp4';
-    },
-    getBreakClipContentType: function () {
-      return 'video/mp4';
-    },
-    getBreakClipPosterUrl: function () {
-      return 'https://www.radiantmediaplayer.com/images/poster-rmp-ads.jpg';
-    },
-    getBreakClipPosition: function () {
-      return 0;
-    }
-  };
-
-  function addBreakToMedia(media) {
-    media.breakClips = [{
-      id: 'bc1',
-      title: ad.getBreakClipTitle(),
-      contentId: ad.getBreakClipUrl(),
-      contentType: ad.getBreakClipContentType(),
-      posterUrl: ad.getBreakClipPosterUrl(),
-      whenSkippable: 5
-    }];
-    media.breaks = [{
-      id: 'b1',
-      breakClipIds: ['bc1'],
-      position: ad.getBreakClipPosition()
-    }];
-  };
-  playerManager.setMessageInterceptor(
-    cast.framework.messages.MessageType.LOAD,
-    request => {
-      addBreakToMedia(request.media);
-      return request;
-    });
-  context.start();
-
-})();
+playerManager.setMessageInterceptor(
+  cast.framework.messages.MessageType.LOAD,
+  request => {
+    addBreakToMedia(request.media);
+    return request;
+  });
+context.start();
