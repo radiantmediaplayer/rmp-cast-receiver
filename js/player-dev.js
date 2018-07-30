@@ -49,9 +49,9 @@ playerManager.addEventListener(
 
     // Get all text tracks
     const tracks = textTracksManager.getTracks();
-    console.log(tracks);
-    var minTrackId;
-    for (var i = 0, len = tracks.length; i < len; i++) {
+    window.console.log(tracks);
+    let minTrackId;
+    for (let i = 0, len = tracks.length; i < len; i++) {
       if (!minTrackId) {
         minTrackId = tracks[i].trackId;
       } else {

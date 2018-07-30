@@ -13,7 +13,7 @@ limitations under the License.
 
 const context = cast.framework.CastReceiverContext.getInstance();
 const playerManager = context.getPlayerManager();
-var ad = {
+const ad = {
   getBreakClipTitle: function () {
     return 'RMP AD';
   },
