@@ -39,6 +39,9 @@ playbackConfig.licenseUrl = 'https://cwip-shaka-proxy.appspot.com/no_auth';
 // example for license requests with withCredentials 
 /*playbackConfig.licenseRequestHandler = requestInfo => {
   requestInfo.withCredentials = true;
+  requestInfo.headers = {
+    'DRM-Message': 'eyJjoiYyJAQv7fe0JhNjA'
+  };
 };*/
 playbackConfig.protectionSystem = cast.framework.ContentProtection.WIDEVINE;
 context.start({ playbackConfig: playbackConfig });
