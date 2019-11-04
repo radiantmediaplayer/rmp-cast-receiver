@@ -77,7 +77,7 @@ playerManager.setMessageInterceptor(
           cast.framework.messages.MessageType.SEEK,
           seekData => {
             // if the SEEK supported media command is disabled, block seeking
-            if (!(playerManager.getSupportedMediaCommands() & cast.framework.messages.Command.SEEK)) {
+            if (!(playerManager.getSupportedMediaCommands() && cast.framework.messages.Command.SEEK)) {
               return null;
             }
             return seekData;
