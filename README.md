@@ -21,7 +21,12 @@ Information on how use and develop a custom CAF receiver app [can be found here]
 ## Issues
 Issues should be submitted in this GitHub page. We will do our best to review them.
 
-## License
-rmp-cast-receiver examples are released under Apache License 2.0.
+## License for rmp-cast-receiver
+rmp-cast-receiver is released under Apache License 2.0.
 
-Radiant Media Player is a commercial HTML5 video player and has its own license which can be found here: [https://www.radiantmediaplayer.com/terms-of-service.html](https://www.radiantmediaplayer.com/terms-of-service.html)
+## License for Radiant Media Player
+Radiant Media Player is a commercial HTML5 media player, not covered by the above MIT license. 
+
+Radiant Media Player license can be found here: [https://www.radiantmediaplayer.com/terms-of-service.html](https://www.radiantmediaplayer.com/terms-of-service.html). 
+
+You may request a free trial for Radiant Media Player at: https://www.radiantmediaplayer.com/free-trial.html.
