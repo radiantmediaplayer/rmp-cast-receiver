@@ -1,5 +1,5 @@
 /**
-@license Copyright (c) 2018-2019 Radiant Media Player | https://www.radiantmediaplayer.com
+@license Copyright (c) 2018-2020 Radiant Media Player | https://www.radiantmediaplayer.com
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -82,6 +82,24 @@ playerManager.setMessageInterceptor(
             }
             return seekData;
           });
+      }
+      // DRM
+      if (request.media.customData.licenseUrl) {
+        playerManager.setMediaPlaybackInfoHandler((loadRequest, playbackConfig) => {
+          playbackConfig.protectionSystem = cast.framework.ContentProtection.WIDEVINE;
+          playbackConfig.licenseUrl = request.media.customData.licenseUrl;
+          if (typeof request.media.customData.credentials === 'boolean' || typeof request.media.customData.licenseHeaders === 'object') {
+            playbackConfig.licenseRequestHandler = requestInfo => {
+              if (typeof request.media.customData.credentials === 'boolean') {
+                requestInfo.withCredentials = request.media.customData.credentials;
+              }
+              if (typeof request.media.customData.licenseHeaders === 'object') {
+                requestInfo.headers = request.media.customData.licenseHeaders;
+              }
+            };
+          }
+          return playbackConfig;
+        });
       }
     }
     return request;
