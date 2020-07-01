@@ -1,0 +1,26 @@
+{
+  "name": "rmp-cast-receiver",
+  "version": "1.1.1",
+  "author": "Radiant Media Player <support@radiantmediaplayer.com>",
+  "description": "Radiant Media Player custom Cast Application Framework (CAF) receiver app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radiantmediaplayer/rmp-cast-receiver.git"
+  },
+  "main": "js/prod/player.min.js",
+  "keywords": [
+    "cast",
+    "google",
+    "custom-caf-receiver",
+    "google-cast",
+    "media",
+    "video",
+    "html5",
+    "javascript"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/radiantmediaplayer/rmp-cast-receiver/issues"
+  },
+  "homepage": "https://www.radiantmediaplayer.com/docs/latest/google-cast.html"
+}

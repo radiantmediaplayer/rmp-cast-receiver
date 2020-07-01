@@ -21,7 +21,7 @@ Issues should be submitted in this GitHub page. We will do our best to review th
 rmp-cast-receiver is released under Apache License 2.0.
 
 ## License for Radiant Media Player
-Radiant Media Player is a commercial HTML5 media player, not covered by the above MIT license. 
+Radiant Media Player is a commercial HTML5 media player, not covered by the above Apache License 2.0. 
 
 Radiant Media Player license can be found here: [https://www.radiantmediaplayer.com/terms-of-service.html](https://www.radiantmediaplayer.com/terms-of-service.html). 
 
