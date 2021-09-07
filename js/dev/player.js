@@ -1,5 +1,5 @@
 /**
-@license Copyright (c) 2018-2020 Radiant Media Player | https://www.radiantmediaplayer.com
+@license Copyright (c) 2018-2021 Radiant Media Player | https://www.radiantmediaplayer.com
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -56,6 +56,29 @@ playerManager.setMessageInterceptor(
   cast.framework.messages.MessageType.LOAD,
   request => {
     if (request.media && request.media.customData) {
+      // passing credentials/headers for manifest or segment requests (for license request see below)
+      // use player setting googleCastHeaders for custom headers
+      if (typeof request.media.customData.credentials === 'boolean' || typeof request.media.customData.headers === 'object') {
+        playerManager.setMediaPlaybackInfoHandler((loadRequest, playbackConfig) => {
+          playbackConfig.manifestRequestHandler = requestInfo => {
+            if (typeof request.media.customData.credentials === 'boolean') {
+              requestInfo.withCredentials = request.media.customData.credentials;
+            }
+            if (typeof request.media.customData.headers === 'object') {
+              requestInfo.headers = request.media.customData.headers;
+            }
+          };
+          playbackConfig.segmentRequestHandler = requestInfo => {
+            if (typeof request.media.customData.credentials === 'boolean') {
+              requestInfo.withCredentials = request.media.customData.credentials;
+            }
+            if (typeof request.media.customData.headers === 'object') {
+              requestInfo.headers = request.media.customData.headers;
+            }
+          };
+          return playbackConfig;
+        });
+      }
       if (request.media.customData.adTagUrl) {
         if (request.media.customData.currentTime) {
           // VOD and currentTime is not 0
@@ -101,6 +124,10 @@ playerManager.setMessageInterceptor(
           return playbackConfig;
         });
       }
+      // additional custom data passed to the player through the googleCastData object setting
+      /*if (request.media.customData.additionalData) {
+        // Do something with request.media.customData.additionalData object
+      }*/
     }
     return request;
   }

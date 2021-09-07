@@ -1,6 +1,6 @@
 {
   "name": "rmp-cast-receiver",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "author": "Radiant Media Player <support@radiantmediaplayer.com>",
   "description": "Radiant Media Player custom Cast Application Framework (CAF) receiver app",
   "repository": {
