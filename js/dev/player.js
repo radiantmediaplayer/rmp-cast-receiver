@@ -121,6 +121,19 @@ playerManager.setMessageInterceptor(
               }
             };
           }
+          // specific handling for casting DRM content with DRMtoday by castLabs
+          if (request.media.customData.drmToday) {
+            playbackConfig.licenseHandler = license => {
+              try {
+                // If widevine response
+                const response = JSON.parse(new TextDecoder().decode(license));
+                response.data = shaka.util.Uint8ArrayUtils.fromBase64(response.license);
+                return response.data;
+              } catch (e) {
+                return null;
+              }
+            };
+          }
           return playbackConfig;
         });
       }
